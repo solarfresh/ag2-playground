@@ -8,11 +8,14 @@ class Settings(BaseSettings):
     It includes settings for the Socket.IO server and API keys.
     The settings are loaded from a .env file.
     """
-    model_config = SettingsConfigDict(env_file='.env', env_file_encoding='utf-8')
+    model_config = SettingsConfigDict(
+        env_file=['.env', '../.env', '../../.env'],  # Try multiple paths
+        env_file_encoding='utf-8'
+    )
 
     # Socket.IO server settings
     SERVER_HOST: str = "localhost"
-    SERVER_PORT: int = 5000
+    SERVER_PORT: int = 5001
 
     # Logging settings
     # The log level can be set to DEBUG, INFO, WARNING, ERROR, or CRITICAL
